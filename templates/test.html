@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% for service in services %}
+    <h3>{{ service.username}}</h3>
+    <h5> {{ service.name }}</h5>
+    <img src="{{ service.image1.url }}" alt="">      
+    {% endfor %}
+</body>
+</html>

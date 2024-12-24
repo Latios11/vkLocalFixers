@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>placed orders</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+   <link rel="stylesheet" href="../static/admin_style.css">
+   <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+{% include 'sp_header.html' %}
+<section class="show-products">
+<h1 class="heading">Placed orders</h1>
+<div class="box-container">
+   {% for order in orders %}
+   <div class="box">
+         {% for service in services %}
+         {% if service.name == order.service_name %}
+            <img src={{ service.image1.url }} >
+            <div class="name">{{ service.name }}</div>
+            <div class="price">₹<span>{{ service.price }}</span>/-</div>
+            <div class="details"><span>{{ service.details }}</span></div>
+         {% endif %}
+         {% endfor %}
+      <div class="details"><span> Placed on : {{ order.placed_on }}</span> </div> 
+      <div class="details"><span> Name : {{ order.uname }}</span> </div>
+      <div class="details"><span> Number : {{ order.phno }}</span> </div>
+      <div class="details"><span> Address : {{ order.add1 }}, {{order.city}}, {{order.state}}</span> </div>
+      <div class="details"><span> Number of persons : {{ order.qty }}</span> </div>
+      <div class="details"><span> Total price : ₹{{ order.total_price }}/-</span> </div>
+      <div class="details"><span> Payment method : {{ order.pay_method }}</span> </div>
+      <div class="details"><span> Message : {{ order.message }}</span> </div>
+      <div class="flex-btn">
+         <a href="{% url 'complete' order.id %}" class="delete-btn" onclick="return confirm('Finish this order?');">Complete Order</a>
+      </div>
+   </div>
+   {% endfor %}
+   {% if not orders %}
+   <p class="empty">no orders placed yet!</p>
+   {% endif %}
+</div>
+</section>
+</section>
+<script src="../static/admin_script.js"></script>   
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>orders</title>
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+{% include 'header.html' %}
+<section class="orders">
+   <h1 class="heading">placed orders</h1>
+   <div class="box-container">
+   {% for order in orders %}
+   <div class="box">
+      <p>Placed on : <span>{{order.placed_on}}</span></p>
+      <p>Service provider name : <span>{{order.username}}</span></p>
+      <p>Service name : <span>{{order.service_name}}</span></p>
+      <p>Number of persons: <span>{{order.qty}}</span></p>
+      <p>payment method : <span>{{ order.pay_method }}</span></p>
+      <p>total price : <span>₹{{ order.total_price }}/-</span></p>
+      <div class="flex-btn">
+         <a href="{% url 'cancel' order.id %}" class="delete-btn" onclick="return confirm('cancel this order?');">Cancel Order</a>
+      </div>
+   </div>
+   {% endfor %}
+   {% if not orders %}
+   <p class="empty">no orders placed yet!</p>
+   {% endif %}
+</div>
+</section>
+{% include 'footer.html'%}
+<script src="../static/script.js"></script>
+</body>
+</html>

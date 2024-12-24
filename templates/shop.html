@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>shop</title>
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+ {% include 'header.html' %}
+<section class="products">
+   <h1 class="heading">latest Services</h1>
+   <div class="box-container">
+   {% for service in services %}
+   <form action="{% url 'proceed' service.id %}" method="post" class="box">
+      {% csrf_token %}
+      <input type="hidden" name="pid" value="{{ service.username }}">
+      <input type="hidden" name="name" value="{{ service.name }}">
+      <input type="hidden" name="price" value="{{ service.price }}">
+      <input type="hidden" name="image" value="{{ service.image1.url }}">
+      <a href="{% url 'quickview' service.id %}" class="fas fa-eye"></a>
+      <img src="{{ service.image1.url }}" alt="">
+      <div class="name">{{ service.name }}</div>
+      <div class="flex">
+         <div class="price"><span>₹</span>{{ service.price }}<span>/-</span></div>
+         <input type="number" name="qty" class="qty" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1">
+      </div>
+      <input type="submit" value="Book now" class="btn" name="add_to_cart">
+   </form>
+   {% endfor %}
+   </div>
+</section>
+{% include 'footer.html' %}
+<script src="../static/script.js"></script>
+</body>
+</html>

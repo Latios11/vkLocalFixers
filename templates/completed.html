@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Services</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+   <link rel="stylesheet" href="../static/admin_style.css">
+   <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+{% include 'sp_header.html' %}
+<section class="show-products">
+<h1 class="heading">services added</h1>
+<div class="box-container">
+   {% for order in com %}
+   <div class="box">
+    {% for service in services %}
+      {% if service.name == order.service_name %}
+      <img src={{ service.image1.url }}>
+      {% endif %}
+    {% endfor %}
+      <div class="name">{{ order.uname }}</div>
+      <div class="details"><span>Service: {{ order.service_name }}</span></div>
+      <div class="details"><span>Placed on: {{ order.placed_on }}</span></div>
+      <div class="details"><span>completed on: {{ order.completed_on }}</span></div>
+      <div class="price">Price: ₹<span>{{ order.total_price }}</span>/-</div>
+      <div class="details"><span>Phno: {{ order.phno }}</span></div>
+      <div class="details"><span>Address: {{order.add1}}, {{order.add2}}, {{order.city}}, {{order.pincode}}</span></div>
+   </div>
+   {% endfor %}
+   {% if com is None %}
+   <p class="empty">No orders completed yet!</p>
+   {% endif %}
+</div>
+</section>
+<script src="../static/admin_script.js"></script>   
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Services</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+   <link rel="stylesheet" href="../static/admin_style.css">
+   <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+{% include 'sp_header.html' %}
+<section class="add-products">
+   <h1 class="heading">add Service</h1>
+   <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="flex">
+         <div class="inputBox">
+            <span>service name (required)</span>
+            <input type="text" class="box" required maxlength="100" placeholder="enter product name" name="name">
+         </div>
+         <div class="inputBox">
+            <span>service price (required)</span>
+            <input type="number" min="0" class="box" required max="9999999999" placeholder="enter product price" onkeypress="if(this.value.length == 10) return false;" name="price">
+         </div>
+        <div class="inputBox">
+            <span>image 01 (required)</span>
+            <input type="file" name="image1" accept="image/jpg, image/jpeg, image/png, image/webp" class="box" required>
+        </div>
+        <div class="inputBox">
+            <span>image 02 (required)</span>
+            <input type="file" name="image2" accept="image/jpg, image/jpeg, image/png, image/webp" class="box" required>
+        </div>
+        <div class="inputBox">
+            <span>image 03 (required)</span>
+            <input type="file" name="image3" accept="image/jpg, image/jpeg, image/png, image/webp" class="box" required>
+        </div>
+         <div class="inputBox">
+            <span>service details (required)</span>
+            <textarea name="details" placeholder="enter service details" class="box" required maxlength="500" cols="30" rows="10"></textarea>
+         </div>
+      </div>  
+      <input type="submit" value="add service" class="btn" name="add_product">
+   </form>
+</section>
+<script src="../static/admin_script.js"></script>
+</body>
+</html>

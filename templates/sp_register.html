@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>register admin</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+   <link rel="stylesheet" href="../static/admin_style.css">
+   <link rel="style sheet" href="../static/style.css">
+</head>
+<body>
+{% include 'sp_header.html' %}
+<section class="form-container">
+   <form method="post">
+      {% csrf_token %}
+      <h3>register now</h3>
+      <input type="text" name="username" required placeholder="enter your username" maxlength="20"  class="box">
+      <input type="email" name="email" required placeholder="enter your email" maxlength="20"  class="box">
+      <input type="password" name="pass1" required placeholder="enter your password" maxlength="20"  class="box">
+      <input type="password" name="pass2" required placeholder="confirm your password" maxlength="20"  class="box">
+      <input type="submit" value="register now" class="btn" name="submit">
+   </form>
+</section>
+<script src="../static/admin_script.js"></script>
+</body>
+</html>

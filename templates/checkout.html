@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>checkout</title>
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="../../static/style.css">
+</head>
+<body>
+
+{% include 'header.html' %}
+
+<section class="checkout-orders">
+
+<form method="POST">
+
+   {% csrf_token %}
+      
+      <h3>Place your order</h3>
+      <div class="flex">
+
+      <input type="hidden" name="username"  value="{{service.username}}" class="box" maxlength="20" required>
+
+         <div class="inputBox">
+            <span>Your username :</span>
+            <input type="text" name="uname"  value="{{user.username}}" class="box" maxlength="20" required>
+         </div>
+
+         <div class="inputBox">
+            <span>Your email :</span>
+            <input type="email" name="email"  value={{user.email}} class="box" maxlength="50" required>
+         </div>
+
+         <div class="inputBox">
+            <span>Your number :</span>
+            <input type="number" name="phno" placeholder="enter your number" class="box" min="0" max="9999999999" onkeypress="if(this.value.length == 10) return false;" required>
+         </div>
+         
+         <div class="inputBox">
+            <span>Payment method :</span>
+            <select name="method" class="box" required>
+               <option value="pay on service delivery">pay on service delivery</option>
+            </select>
+         </div>
+         
+         <div class="inputBox">
+            <span>Address line 01 :</span>
+            <input type="text" name="add1" placeholder="e.g. flat number" class="box" maxlength="50" required>
+         </div>
+         
+         <div class="inputBox">
+            <span>Address line 02 :</span>
+            <input type="text" name="add2" placeholder="e.g. street name" class="box" maxlength="50" required>
+         </div>
+         
+         <div class="inputBox">
+            <span>City :</span>
+            <input type="text" name="city" placeholder="e.g. prayagraj" class="box" maxlength="50" required>
+         </div>
+         
+         <div class="inputBox">
+            <span>State :</span>
+            <input type="text" name="state" placeholder="e.g. uttar pradesh" class="box" maxlength="50" required>
+         </div>
+         
+         <div class="inputBox">
+            <span>Pin code :</span>
+            <input type="number" min="0" name="pincode" placeholder="e.g. 222143" min="0" max="999999" onkeypress="if(this.value.length == 6) return false;" class="box" required>
+         </div>
+         
+         <div class="inputBox">
+            <span>Additional message regarding this service :</span>
+            <input type="text" name="message" class="box" maxlength="200">
+         </div>
+      
+      </div>
+      
+      <button type="submit" class="btn" >Submit</button>
+   
+   </form>
+</section>
+
+{% include 'footer.html' %}
+<script src="../../static/script.js"></script>
+</body>
+</html>

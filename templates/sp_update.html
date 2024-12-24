@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>update profile</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+   <link rel="stylesheet" href="../static/admin_style.css">
+   <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+{% include 'sp_header.html' %}
+<section class="form-container">
+   <form action="" method="post">
+      {% csrf_token %}
+      <h3>update profile</h3>
+      {% comment %} <input type="hidden" name="prev_pass" value="{{ user.username }}"> {% endcomment %}
+      <input type="password" name="old_pass" placeholder="enter old password" maxlength="20"  class="box">
+      <input type="password" name="new_pass" placeholder="enter new password" maxlength="20"  class="box">
+      <input type="password" name="confirm_pass" placeholder="confirm new password" maxlength="20"  class="box">
+      <input type="submit" value="update now" class="btn" name="submit">
+   </form>
+</section>
+<script src="../static/admin_script.js"></script>
+</body>
+</html>

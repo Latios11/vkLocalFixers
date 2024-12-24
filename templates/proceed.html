@@ -1,0 +1,56 @@
+{% load mathfilters %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>checkout</title>
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+
+{% include 'header.html' %}
+
+<section class="quick-view">
+   <h1 class="heading">Confirm your Order</h1>
+   <form method="post" class="box">
+      <input type="hidden" name="username" value="{{ service.username }}">
+      <input type="hidden" name="name" value="{{ service.name }}">
+      <input type="hidden" name="price" value="{{ service.price }}">
+      <input type="hidden" name="sid" value="{{ service.id }}">
+      <input type="hidden" name="totalprice" value="{{ total }}">
+      <div class="row">
+         <div class="image-container">
+            <div class="main-image">
+               <img src="{{ service.image1.url }}" alt="">
+            </div>
+            <div class="sub-image">
+               <img src="{{ service.image1.url }}" alt="">
+               <img src="{{ service.image2.url }}" alt="">
+               <img src="{{ service.image3.url }}" alt="">
+            </div>
+         </div>
+         <div class="content">
+            <div class="name">{{ service.name }}</div>
+            <h2>Service provider : {{ service.username }}</h2>       
+            <div class="flex">
+               <div class="price"><span>Total:  ₹</span>{{ total }}<span>/-</span></div>
+            </div>
+            <div class="details">{{ service.details }}</div>
+            <div class="flex-btn">
+               {% comment %} <button type="submit" class="btn">Proceed to checkout</button> {% endcomment %}
+            <a class="btn" href="{% url 'checkout' service.id total %}">Proceed</a>
+            </div>
+         </div>
+      </div>
+   </form>
+</section>
+
+{% include 'footer.html' %}
+<script src="../static/script.js"></script>
+</body>
+</html>

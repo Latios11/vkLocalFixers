@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Services</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+   <link rel="stylesheet" href="../static/admin_style.css">
+   <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+{% include 'sp_header.html' %}
+<section class="show-products">
+<h1 class="heading">services added</h1>
+<div class="box-container">
+   {% if services is not None %}
+   {% for service in services %}
+   <div class="box">
+      <img src={{ service.image1.url }} >
+      <div class="name">{{ service.name }}</div>
+      <div class="price">₹<span>{{ service.price }}</span>/-</div>
+      <div class="details"><span>{{ service.details }}</span></div>
+   </div>
+   {% endfor %}
+   {% else %}
+   <p class="empty">no Services added yet!</p>
+   {% endif %}
+</div>
+</section>
+<script src="../static/admin_script.js"></script>   
+</body>
+</html>

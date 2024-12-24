@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>dashboard</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+   <link rel="stylesheet" href="../static/admin_style.css">
+   <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+{% include 'sp_header.html' %}
+<section class="dashboard">
+   <h1 class="heading">dashboard</h1>
+   <div class="box-container">
+      <div class="box">
+         <h3>welcome!</h3>
+         <p>{{ user.username }}</p>
+         <a href="{% url 'dashboard' %}" class="btn">Dashboard</a>
+      </div>
+      <div class="box">
+         <h3>{{o_count}}</h3>
+         <p>orders placed</p>
+         <a href="{% url 'sporders' %}" class="btn">see orders</a>
+      </div>
+      <div class="box">
+         <h3>{{c_count}}</h3>
+         <p>orders completed</p>
+         <a href="{% url 'corders' %}" class="btn">see orders</a>
+      </div>
+      <div class="box"> 
+         <h3>{{ ser_count }}</h3>
+         <p>services added</p>
+         <a href="{% url 'addservices' %}" class="btn">add services</a>
+      </div>
+      <div class="box"> 
+         <h3>{{ ser_count }}</h3>
+         <p>services added</p>
+         <a href="{% url 'services' %}" class="btn">See services</a>
+      </div>
+   </div>
+</section>
+<script src="../static/admin_script.js"></script>
+</body>
+</html>
