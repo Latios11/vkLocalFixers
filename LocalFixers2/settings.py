@@ -135,4 +135,4 @@ EMAIL_HOST_USER = 'djangovivek117@gmail.com'
 EMAIL_HOST_PASSWORD = 'ofdq bdlc bdwo xqzd'
 EMAIL_USE_TLS = True
 
-ALLOWED_HOSTS = ['vk11-LocalFixers2.onrender.com']
+ALLOWED_HOSTS = ['LocalFixers2.onrender.com']
