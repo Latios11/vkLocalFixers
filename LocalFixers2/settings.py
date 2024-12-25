@@ -27,9 +27,6 @@ SECRET_KEY = 'django-insecure-%y+e#aq*b2qfwk7m9^ulw@n3yixe%x&^rt^9)azj2&bk5_7t@m
 DEBUG = True
 
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-
 # Application definition
 
 INSTALLED_APPS = [
