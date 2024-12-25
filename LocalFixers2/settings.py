@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
 from pathlib import Path
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,6 +27,8 @@ SECRET_KEY = 'django-insecure-%y+e#aq*b2qfwk7m9^ulw@n3yixe%x&^rt^9)azj2&bk5_7t@m
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 # Application definition
@@ -50,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'LocalFixers2.urls'
@@ -81,6 +85,10 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+}
+
+DATABASES = {
+    'defualt': dj_database_url.config(default='sqlite:///db.sqlite3' + os.path.join(BASE_DIR, 'db.sqlite3'))
 }
 
 
@@ -135,3 +143,5 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'djangovivek117@gmail.com'
 EMAIL_HOST_PASSWORD = 'ofdq bdlc bdwo xqzd'
 EMAIL_USE_TLS = True
+
+ALLOWED_HOSTS = ['vk11-LocalFixers2.herokuapp.com']
